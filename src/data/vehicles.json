@@ -1,8 +1,152 @@
 [
   {
     "id": 1,
-    "driverName": "string",
-    "driverContact": "string",
-    "category": "string"
+    "driverName": "John Doe",
+    "driverContact": "+1234567890",
+    "category": "Cargo",
+    "coordinate": {
+      "latitude": 39.8283,
+      "longitude": -98.5795
+    }
+  },
+  {
+    "id": 2,
+    "driverName": "Jane Smith",
+    "driverContact": "+9876543210",
+    "category": "Passenger",
+    "coordinate": {
+      "latitude": 37.7749,
+      "longitude": -122.4194
+    }
+  },
+  {
+    "id": 3,
+    "driverName": "Alex Johnson",
+    "driverContact": "+5555555555",
+    "category": "Special vehicle",
+    "coordinate": {
+      "latitude": 35.6895,
+      "longitude": -105.9378
+    }
+  },
+  {
+    "id": 4,
+    "driverName": "Emma Wilson",
+    "driverContact": "+4444444444",
+    "category": "Cargo",
+    "coordinate": {
+      "latitude": 32.7157,
+      "longitude": -117.1611
+    }
+  },
+  {
+    "id": 5,
+    "driverName": "Michael Brown",
+    "driverContact": "+7777777777",
+    "category": "Passenger",
+    "coordinate": {
+      "latitude": 33.749,
+      "longitude": -84.388
+    }
+  },
+  {
+    "id": 6,
+    "driverName": "Sophia Davis",
+    "driverContact": "+2222222222",
+    "category": "Special vehicle",
+    "coordinate": {
+      "latitude": 39.0997,
+      "longitude": -94.5786
+    }
+  },
+  {
+    "id": 7,
+    "driverName": "Liam Johnson",
+    "driverContact": "+9999999999",
+    "category": "Cargo",
+    "coordinate": {
+      "latitude": 47.6062,
+      "longitude": -122.3321
+    }
+  },
+  {
+    "id": 8,
+    "driverName": "Olivia Davis",
+    "driverContact": "+3333333333",
+    "category": "Passenger",
+    "coordinate": {
+      "latitude": 36.1627,
+      "longitude": -86.7816
+    }
+  },
+  {
+    "id": 9,
+    "driverName": "Noah Wilson",
+    "driverContact": "+6666666666",
+    "category": "Special vehicle",
+    "coordinate": {
+      "latitude": 38.9072,
+      "longitude": -77.0369
+    }
+  },
+  {
+    "id": 10,
+    "driverName": "Ava Johnson",
+    "driverContact": "+1111111111",
+    "category": "Cargo",
+    "coordinate": {
+      "latitude": 40.7128,
+      "longitude": -74.006
+    }
+  },
+  {
+    "id": 11,
+    "driverName": "William Smith",
+    "driverContact": "+8888888888",
+    "category": "Passenger",
+    "coordinate": {
+      "latitude": 41.8781,
+      "longitude": -87.6298
+    }
+  },
+  {
+    "id": 12,
+    "driverName": "Isabella Wilson",
+    "driverContact": "+2222222222",
+    "category": "Special vehicle",
+    "coordinate": {
+      "latitude": 29.7604,
+      "longitude": -95.3698
+    }
+  },
+  {
+    "id": 13,
+    "driverName": "James Johnson",
+    "driverContact": "+5555555555",
+    "category": "Cargo",
+    "coordinate": {
+      "latitude": 42.3601,
+      "longitude": -71.0589
+    }
+  },
+  {
+    "id": 14,
+    "driverName": "Sophia Brown",
+    "driverContact": "+4444444444",
+    "category": "Passenger",
+    "coordinate": {
+      "latitude": 47.6062,
+      "longitude": -122.3321
+    }
+  },
+  {
+    "id": 15,
+    "driverName": "Alexander Davis",
+    "driverContact": "+7777777777",
+    "category": "Special vehicle",
+    "coordinate": {
+      "latitude": 39.9526,
+      "longitude": -75.1652
+    }
   }
 ]

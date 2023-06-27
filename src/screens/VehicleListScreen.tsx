@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { StyleSheet, View, FlatList, Button } from "react-native";
+import { StyleSheet, View, Button, Text } from "react-native";
 
-import VehicleItem from "../components/VehicleItem";
+import VehicleMapView from "../components/VehicleMapView";
+import VehicleList from "../components/VehicleList";
 import vehiclesDataJson from "../data/vehicles.json";
-import { Vehicle } from "../types";
+import { Category, Vehicle, VehicleListScreenNavigationProp } from "../types";
 
 const vehiclesData = vehiclesDataJson as Vehicle[];
 
-const VehicleListScreen = () => {
+type Props = {
+  navigation: VehicleListScreenNavigationProp;
+};
+
+const VehicleListScreen: React.FC<Props> = ({ navigation }) => {
   const [vehicles, setVehicles] = useState<Vehicle[]>(vehiclesData);
   const [showMap, setShowMap] = useState(false);
 
@@ -21,33 +26,19 @@ const VehicleListScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.filterContainer}>
-        <Button title="Filter: All" onPress={() => setVehicles(vehiclesData)} />
-        <Button title="Filter: Cargo" onPress={() => filterVehicles("Cargo")} />
+        <Text style={styles.title}>Filter by:</Text>
+        <Button title="All" onPress={() => setVehicles(vehiclesData)} />
+        <Button title="Cargo" onPress={() => filterVehicles(Category.Cargo)} />
         <Button
-          title="Filter: Passenger"
-          onPress={() => filterVehicles("Passenger")}
+          title="Passenger"
+          onPress={() => filterVehicles(Category.Passenger)}
         />
-        <Button
-          title="Filter: Special"
-          onPress={() => filterVehicles("Special")}
-        />
+        <Button title="Special" onPress={() => filterVehicles(Category.Spec)} />
       </View>
       {showMap ? (
-        // Render MapView with markers
-        <View style={styles.mapContainer}>{/* Your MapView component */}</View>
+        <VehicleMapView vehicles={vehicles} />
       ) : (
-        <FlatList
-          data={vehicles}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <VehicleItem
-              vehicle={item}
-              onPress={() => {
-                // Navigate to VehicleScreen with vehicle details
-              }}
-            />
-          )}
-        />
+        <VehicleList vehicles={vehicles} navigation={navigation} />
       )}
       <Button
         title={showMap ? "Switch to List View" : "Switch to Map View"}
@@ -64,13 +55,12 @@ const styles = StyleSheet.create({
   },
   filterContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
     marginBottom: 16,
-  },
-  mapContainer: {
-    flex: 1,
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "space-between",
+  },
+  title: {
+    fontSize: 18,
   },
 });
 
