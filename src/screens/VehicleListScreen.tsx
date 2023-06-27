@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Button, Text } from "react-native";
+import { StyleSheet, View, Button } from "react-native";
+import { useTranslation } from "react-i18next";
 
 import VehicleMapView from "../components/VehicleMapView";
 import VehicleList from "../components/VehicleList";
@@ -13,6 +14,7 @@ type Props = {
 };
 
 const VehicleListScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
   const [vehicles, setVehicles] = useState<Vehicle[]>(vehiclesData);
   const [showMap, setShowMap] = useState(false);
 
@@ -26,14 +28,22 @@ const VehicleListScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.filterContainer}>
-        <Text style={styles.title}>Filter by:</Text>
-        <Button title="All" onPress={() => setVehicles(vehiclesData)} />
-        <Button title="Cargo" onPress={() => filterVehicles(Category.Cargo)} />
         <Button
-          title="Passenger"
+          title={t("category.all")}
+          onPress={() => setVehicles(vehiclesData)}
+        />
+        <Button
+          title={t("category.cargo")}
+          onPress={() => filterVehicles(Category.Cargo)}
+        />
+        <Button
+          title={t("category.passenger")}
           onPress={() => filterVehicles(Category.Passenger)}
         />
-        <Button title="Special" onPress={() => filterVehicles(Category.Spec)} />
+        <Button
+          title={t("category.spec")}
+          onPress={() => filterVehicles(Category.Spec)}
+        />
       </View>
       {showMap ? (
         <VehicleMapView vehicles={vehicles} />
@@ -41,7 +51,7 @@ const VehicleListScreen: React.FC<Props> = ({ navigation }) => {
         <VehicleList vehicles={vehicles} navigation={navigation} />
       )}
       <Button
-        title={showMap ? "Switch to List View" : "Switch to Map View"}
+        title={showMap ? t("switch.list") : t("switch.map")}
         onPress={() => setShowMap(!showMap)}
       />
     </View>

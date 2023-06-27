@@ -1,22 +1,49 @@
 import React from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Button, Linking } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { RouteProp, useRoute } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 
 import { RootStackParamList } from "../types";
 import { renderMarkerIcon } from "../components/VehicleMapView";
+import { getName } from "../helpers/getName";
 
 type VehicleScreenRouteProp = RouteProp<RootStackParamList, "Vehicle">;
 
 const VehicleScreen = () => {
   const route = useRoute<VehicleScreenRouteProp>();
+  const { t } = useTranslation();
 
   const { vehicle } = route.params;
   const { coordinate } = vehicle;
 
-  const onCallDriver = (phone: string) => {};
+  const onCallDriver = (phoneNumber: string) => {
+    const url = `tel:${phoneNumber}`;
 
-  const onSendMessage = (phone: string) => {};
+    Linking.openURL(url)
+      .then(() => {
+        console.log("Phone call initiated successfully");
+      })
+      .catch((error) => {
+        console.log("An error occurred while making the phone call:", error);
+      });
+  };
+
+  const onSendMessage = (phoneNumber: string) => {
+    const message = t("action.message");
+
+    let url = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(
+      message
+    )}`;
+
+    Linking.openURL(url)
+      .then(() => {
+        console.log("WhatsApp opened successfully");
+      })
+      .catch((error) => {
+        console.log("An error occurred while opening WhatsApp:", error);
+      });
+  };
 
   return (
     <View style={styles.container}>
@@ -36,16 +63,22 @@ const VehicleScreen = () => {
           {renderMarkerIcon(vehicle.category)}
         </Marker>
       </MapView>
-      <Text style={styles.title}>{`ТС #${vehicle.id}`}</Text>
-      <Text style={styles.subtitle}>{`Category: ${vehicle.category}`}</Text>
-      <Text style={styles.subtitle}>{`Driver: ${vehicle.driverName}`}</Text>
-      <Text style={styles.subtitle}>{`Contact: ${vehicle.driverContact}`}</Text>
+      <Text style={styles.title}>{getName(t("app.item"), vehicle.id)}</Text>
+      <Text style={styles.subtitle}>{`${t("vehicle.category")}: ${
+        vehicle.category
+      }`}</Text>
+      <Text style={styles.subtitle}>{`${t("vehicle.driverName")}: ${
+        vehicle.driverName
+      }`}</Text>
+      <Text style={styles.subtitle}>{`${t("vehicle.driverContact")}: ${
+        vehicle.driverContact
+      }`}</Text>
       <Button
-        title="Call"
+        title={t("action.call")}
         onPress={() => onCallDriver(vehicle.driverContact)}
       />
       <Button
-        title="Send Message"
+        title={t("action.sendMessage")}
         onPress={() => onSendMessage(vehicle.driverContact)}
       />
     </View>

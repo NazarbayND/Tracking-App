@@ -1,0 +1,34 @@
+{
+  "app": {
+    "title": "Vehicle Tracking",
+    "list": "Vehicles",
+    "item": "Vehicle",
+    "settings": "Settings"
+  },
+  "category": {
+    "all": "All",
+    "category": "Category",
+    "cargo": "Cargo",
+    "passenger": "Passenger",
+    "spec": "Special Vehicle"
+  },
+  "switch": {
+    "map": "Switch to Map View",
+    "list": "Switch to List View"
+  },
+  "vehicle": {
+    "category": "Category",
+    "driverName": "Driver Name",
+    "driverContact": "Contact Number"
+  },
+  "action": {
+    "call": "Call",
+    "sendMessage": "Send message",
+    "message": "Good afternoon, please tell me what order number you currently have in work"
+  },
+  "settingsScreen": {
+    "language": "Language",
+    "english": "English",
+    "russian": "Russian"
+  }
+}
