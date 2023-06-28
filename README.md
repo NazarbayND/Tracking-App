@@ -22,7 +22,7 @@ Change app language between English and Russian
 `npm install -g expo-cli`
 
 ### Install dependencies:
-`yarn`
+`npm install`
 
 ### Start the development server:
 `expo start`
