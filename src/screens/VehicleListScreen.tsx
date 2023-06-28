@@ -5,15 +5,11 @@ import { useTranslation } from "react-i18next";
 import VehicleMapView from "../components/VehicleMapView";
 import VehicleList from "../components/VehicleList";
 import vehiclesDataJson from "../data/vehicles.json";
-import { Category, Vehicle, VehicleListScreenNavigationProp } from "../types";
+import { Category, Vehicle } from "../types";
 
 const vehiclesData = vehiclesDataJson as Vehicle[];
 
-type Props = {
-  navigation: VehicleListScreenNavigationProp;
-};
-
-const VehicleListScreen: React.FC<Props> = ({ navigation }) => {
+const VehicleListScreen = () => {
   const { t } = useTranslation();
   const [vehicles, setVehicles] = useState<Vehicle[]>(vehiclesData);
   const [showMap, setShowMap] = useState(false);
@@ -48,7 +44,7 @@ const VehicleListScreen: React.FC<Props> = ({ navigation }) => {
       {showMap ? (
         <VehicleMapView vehicles={vehicles} />
       ) : (
-        <VehicleList vehicles={vehicles} navigation={navigation} />
+        <VehicleList vehicles={vehicles} />
       )}
       <Button
         title={showMap ? t("switch.list") : t("switch.map")}

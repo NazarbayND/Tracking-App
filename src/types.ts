@@ -24,7 +24,7 @@ export type RootStackParamList = {
   Vehicle: { vehicle: Vehicle };
 };
 
-export type VehicleListScreenNavigationProp = StackNavigationProp<
+export type VehicleListScreenNavigation = StackNavigationProp<
   RootStackParamList,
   "VehicleList"
 >;

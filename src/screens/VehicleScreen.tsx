@@ -5,8 +5,8 @@ import { RouteProp, useRoute } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
 
 import { RootStackParamList } from "../types";
-import { renderMarkerIcon } from "../components/VehicleMapView";
 import { getName } from "../helpers/getName";
+import MarkerIcon from "../components/MarkerIcon";
 
 type VehicleScreenRouteProp = RouteProp<RootStackParamList, "Vehicle">;
 
@@ -60,7 +60,7 @@ const VehicleScreen = () => {
           coordinate={vehicle.coordinate}
           title={vehicle.driverName}
         >
-          {renderMarkerIcon(vehicle.category)}
+          <MarkerIcon category={vehicle.category} />
         </Marker>
       </MapView>
       <Text style={styles.title}>{getName(t("app.item"), vehicle.id)}</Text>
